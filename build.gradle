@@ -1,0 +1,54 @@
+plugins {
+    id "java"
+    id "cpd" version "1.0"
+    id "pmd"
+    id "jacoco"
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+repositories {
+    mavenCentral()
+    maven { url { "deps" } }
+}
+
+dependencies {
+    implementation "jtamaro:jtamaro:24.0.3"
+    testImplementation "junit:junit:4.13.2"
+}
+
+cpdCheck {
+    source = project.sourceSets.main.java.srcDirs
+
+    minimumTokenCount = 40
+    ignoreIdentifiers = true
+    ignoreLiterals = true
+
+    reports {
+        csv.required = true
+        html.required = true
+        text.required = true
+        xml.required = false
+    }
+}
+
+pmd {
+    consoleOutput = false
+    toolVersion = "7.1.0"
+    rulesMinimumPriority = 2
+    ruleSetFiles = files("pmd.xml")
+}
+
+jacocoTestReport {
+    dependsOn test
+
+    reports {
+        csv.required = true
+        html.required = true
+        xml.required = false
+
+        html.outputLocation = layout.buildDirectory.dir("jacoco/html")
+    }
+}

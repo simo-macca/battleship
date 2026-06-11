@@ -1,0 +1,100 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "jtamaro",
+    "module": "jtamaro",
+    "version": "24.0.3",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.5"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "jtamaro-24.0.3.jar",
+          "url": "jtamaro-24.0.3.jar",
+          "size": 173220,
+          "sha512": "45ecaec44bf5711ea868eda9c6c73b38e9f377131aa727be04c79865a31723459bb91cce196f40abc92362bb27dd82e5a2b723cce4dab470650e3452aff592b4",
+          "sha256": "c5fa0f7a9059289101e9db8da1ccb3e245442f2fe465d487c0006ccbfe7cf414",
+          "sha1": "1a0e669d8fdac317152ff4643b9f145cf07035c3",
+          "md5": "8c752911e4de60b7c97fa53ac0870e77"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "jtamaro-24.0.3.jar",
+          "url": "jtamaro-24.0.3.jar",
+          "size": 173220,
+          "sha512": "45ecaec44bf5711ea868eda9c6c73b38e9f377131aa727be04c79865a31723459bb91cce196f40abc92362bb27dd82e5a2b723cce4dab470650e3452aff592b4",
+          "sha256": "c5fa0f7a9059289101e9db8da1ccb3e245442f2fe465d487c0006ccbfe7cf414",
+          "sha1": "1a0e669d8fdac317152ff4643b9f145cf07035c3",
+          "md5": "8c752911e4de60b7c97fa53ac0870e77"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "jtamaro-24.0.3-javadoc.jar",
+          "url": "jtamaro-24.0.3-javadoc.jar",
+          "size": 482375,
+          "sha512": "9846a1cf1066aaa753e4ce7dc20e5072391137a08647cfe213e3e8520c3282d1098cadb412645db53fc58e18be1b8d6138e745ab3eb956a7c565437283ebeb15",
+          "sha256": "48c8ec92fdd2e7af39578b294fb99472d40bf171739011834cc907308e7418e0",
+          "sha1": "68577bdfb9e87dfab3ef3ac9f0a2a1c2b6b01948",
+          "md5": "e4c9649fc09db2a4013a0763ec9b7003"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "jtamaro-24.0.3-sources.jar",
+          "url": "jtamaro-24.0.3-sources.jar",
+          "size": 86305,
+          "sha512": "4c09c11ed2e9198ee6c30cf0104ac61e5eb5fb3bb124d0f6bc2490341dc11750bebf0441327a07496e770c51789eac8582ee1a3afb659edc1b7bfc031a60205e",
+          "sha256": "72aeb421479935f611506f9af6b069347ff52eadff03f3a30741cd15b1af3ec8",
+          "sha1": "2c35ed8901692af63490e31e68148abea1c2c68b",
+          "md5": "a56bc07997f0b9372500264af789aa12"
+        }
+      ]
+    }
+  ]
+}

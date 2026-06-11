@@ -1,0 +1,29 @@
+name: Expression Tutor Activity
+
+on:
+  push:
+   tags:
+     - '*'
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  et_activity_generation:
+    runs-on: ubuntu-latest
+    name: Activity generation
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Expression Tutor Activity generation
+        uses: LuCEresearchlab/expression-tutor-activity-generator@v1.0.0-alpha03
+        id: exps
+        with:
+          count: '1'
+          srcDir: '.'
+          activityGroup: 'TODO-TOKEN'
+          javaClassPath: 'src/main/libs/jtamaro.jar'
+          ghToken: ${{ secrets.GITHUB_TOKEN }}

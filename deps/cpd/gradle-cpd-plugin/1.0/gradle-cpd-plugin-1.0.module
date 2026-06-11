@@ -1,0 +1,100 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cpd",
+    "module": "gradle-cpd-plugin",
+    "version": "1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "gradle-cpd-plugin-1.0.jar",
+          "url": "gradle-cpd-plugin-1.0.jar",
+          "size": 37622,
+          "sha512": "1c62b826f6a6427654cbc20485e3643a0e466151f083a2ba1dc47ef0fb0e6ebb54f3eafd4cd8625b1b9afe41d88165208109574dc3afbb370f1fecdc00631a70",
+          "sha256": "c20ee1a07e839726c2bc5571bb1f62b5fd3bd20e0cb3eb6a85d962fdd3c5e324",
+          "sha1": "ee79dff9289059e4c853ec3d4e100b93f6a01238",
+          "md5": "3a0fc274316f66425d0b0e8d7cd0f319"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "gradle-cpd-plugin-1.0.jar",
+          "url": "gradle-cpd-plugin-1.0.jar",
+          "size": 37622,
+          "sha512": "1c62b826f6a6427654cbc20485e3643a0e466151f083a2ba1dc47ef0fb0e6ebb54f3eafd4cd8625b1b9afe41d88165208109574dc3afbb370f1fecdc00631a70",
+          "sha256": "c20ee1a07e839726c2bc5571bb1f62b5fd3bd20e0cb3eb6a85d962fdd3c5e324",
+          "sha1": "ee79dff9289059e4c853ec3d4e100b93f6a01238",
+          "md5": "3a0fc274316f66425d0b0e8d7cd0f319"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "gradle-cpd-plugin-1.0-javadoc.jar",
+          "url": "gradle-cpd-plugin-1.0-javadoc.jar",
+          "size": 166725,
+          "sha512": "5a8fd415f8d83281bed61227f4e96a434ef6265afc0f83f40fc325988437312537f85b13524765dabcb414165d40c3633db4bf658aa8e9c3e1899c1ab9bddee3",
+          "sha256": "41503eccdcee2ffb1c29aece4f78df3bdebeda80447dca364364791633c4ec7c",
+          "sha1": "52ccea12984939194fc55971169d9a86f2a1d6a8",
+          "md5": "088033b50c50fbe92107ee8867a6b1cd"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "gradle-cpd-plugin-1.0-sources.jar",
+          "url": "gradle-cpd-plugin-1.0-sources.jar",
+          "size": 21995,
+          "sha512": "0bbb18edf3365e16fb9609ed78b59959245af901fca7fc08f6a25cd7b2728bbccd0e02280711b97b82512795b57b3a32c4b6d5658c29a335d5591c720df27688",
+          "sha256": "14778f89b6b8f2fe733e6b6fd323fdba2462c34fa6bd31f76740301e14dea1f7",
+          "sha1": "cf5bc2de6eb5c11db5b42a8c627e3a8c426a5f93",
+          "md5": "ea73ab8e6c77746ec9d7aa0be3f40029"
+        }
+      ]
+    }
+  ]
+}
