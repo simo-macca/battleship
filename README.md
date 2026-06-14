@@ -59,4 +59,3 @@ Use the `cpdCheck` task (either in VSCode `Gradle Project/Tasks/other/cpdCheck`)
 ### How to determine test coverage
 
 In the test view of VSCode, run the tests using the ["Run tests with coverage"](https://code.visualstudio.com/updates/v1_88#_test-coverage) icon.
-
