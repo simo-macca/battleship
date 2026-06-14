@@ -6,13 +6,13 @@ import project.model.Game;
 
     /**
      * This Main class is the main class of the game;
-     * it connects everything together by constructing and configuring an
+     * it connects everything by constructing and configuring an
      * Interaction.
      */
 public class Main {
 
     /**
-     * Build and run an Interaction for the Batteship Game with 2 players.
+     * Build and run an Interaction for the Battleship Game with 2 players.
      */
     public static void play() {
         IO.interact(Game.create())
@@ -27,7 +27,7 @@ public class Main {
 
     /**
      * Handle a key press event.
-     * The event is handled by the game.
+     * The game handles the event.
      * @param game game before handling the event
      * @param keyChar the key that was pressed
      * @return game after handling the event
@@ -37,7 +37,7 @@ public class Main {
     }
 
     /**
-     * Handle a mouse click event.
+     * Handle a mouse-click event.
      * The event is handled by the game (in this simple case, without information
      * about coordinates or buttons).
      * @param game game before handling the event 
@@ -50,12 +50,11 @@ public class Main {
     }
 
     /**
-     * Handle a mouse click event.
+     * Handle a mouse-click event.
      * The event is handled by the game (in this simple case, without information
      * about coordinates or buttons).
      * @param game game before handling the event 
      * @param coordinate the coordinate where the mouse was clicked
-     * @param button the button that was clicked
      * @return game after handling the event
      */
     public static Game mouseMoveHandler(Game game, Coordinate coordinate) {
@@ -63,7 +62,7 @@ public class Main {
     }
 
     /**
-     * Handle a mouse click event.
+     * Handle a mouse-click event.
      * The event is handled by the game (in this simple case, without information
      * about coordinates or buttons).
      * @param game game before handling the event 
@@ -78,7 +77,7 @@ public class Main {
     /**
      * it's used to know if the player is playing
      * @param game which corresponds to the current game
-     * @return the state of the game, if it is true the application quit automtiacally
+     * @return the state of the game, if it is true, the application quit automatically
      */
     public static boolean close(Game game) {
         return game.quit();

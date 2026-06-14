@@ -25,7 +25,7 @@ public class GameUI {
 
     /**
      * it's used to create a grid's background
-     * @return a light-blue backgorund
+     * @return a light-blue background
      */
     public static Graphic canvas() {
         Sequence<Integer> radius = of(2, 8, 10, 65, 70, 125, 130, 185, 190, 240, 245);
@@ -59,14 +59,14 @@ public class GameUI {
     }
 
     /**
-     * it's used only in the mode's phase to generate a black bacground
-     * @return a mode phase's bacgkround
+     * it's used only in the mode's phase to generate a black background
+     * @return a mode phase's background
      */
     public static Graphic mode() {
         Graphic imagesSepare = verticalSepare(FULL_HEIGTH/60);
         Graphic SELECT_MODE_GRAPHIC = text("Select one mode to start the game:", GameUI.DEFAULT_FONT, FULL_HEIGTH/40, WHITE);
-        Graphic U_GRAPHIC = GameUI.instruction("U", "play againts your friend");
-        Graphic C_GRAPHIC = GameUI.instruction("C", "play againts the computer");
+        Graphic U_GRAPHIC = GameUI.instruction("U", "play against your friend");
+        Graphic C_GRAPHIC = GameUI.instruction("C", "play against the computer");
         return overlay(
                 above(
                     above(
@@ -146,7 +146,6 @@ public class GameUI {
     /**
      * it's used to create a graphic with a specific string
      * @param name the string that is to be displayed
-     * @param width the bacground's width
      * @param fontSize the font size of the string
      * @return a name graphic to a black background
      */
@@ -195,7 +194,7 @@ public class GameUI {
     }
 
     /**
-     * it rappresent the easy mode button
+     * it represents the easy mode button
      * @return a green button 
      */
     public static Graphic easy() {
@@ -203,7 +202,7 @@ public class GameUI {
     }
 
     /**
-     * it rappresent the hard mode button
+     * it represents the hard mode button
      * @return a red button 
      */
     public static Graphic hard() {
@@ -211,8 +210,8 @@ public class GameUI {
     }
 
     /**
-     * it rappresent the name of all the creator of the game
-     * @return three string which all the name of the creator
+     * it represents the name of all the creator of the game
+     * @return three strings that all the name of the creator
      */
     public static Graphic creator() {
         Graphic created = beside(rectangle(10,0,TRANSPARENT), text("Created by:", DEFAULT_FONT, 10, WHITE));
@@ -222,7 +221,7 @@ public class GameUI {
     }
 
     /**
-     * it rappresent the version of the game
+     * it represents the version of the game
      * @return a string with the version of the game
      */
     public static Graphic version() {

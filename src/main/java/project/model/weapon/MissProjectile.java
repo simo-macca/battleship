@@ -9,7 +9,7 @@ import project.configuration.ConstantsUtils;
 import project.ui.cartesianWorldGraphics.CartesianWorldPosition;
 
 /**
- * it rappresents the miss projectile ❌
+ * it represents the miss projectile ❌
  * @param position that corresponds to where the projectile is positioned in the background
  */
 
@@ -17,7 +17,7 @@ public record MissProjectile(Position position) implements Projectile {
 
     @Override
     public CartesianWorldPosition renderingPosition(){
-        CartesianWorldPosition position = positionToPhisicalBoardPosition(directConversion(ConstantsUtils.BOARD_LEFT_CORNER_POSITION), this.position(), ConstantsUtils.TILE_LENGTH);
+        CartesianWorldPosition position = positionToPhysicalBoardPosition(directConversion(ConstantsUtils.BOARD_LEFT_CORNER_POSITION), this.position(), ConstantsUtils.TILE_LENGTH);
         return new CartesianWorldPosition(position.x() + ConstantsUtils.TILE_LENGTH/2, position.y() - ConstantsUtils.TILE_LENGTH/2);
     }
 

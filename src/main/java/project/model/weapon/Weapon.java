@@ -25,8 +25,8 @@ public interface Weapon {
     public Position buttonPosition();
 
     /**
-     * it uses to know where the player has cliced
-     * @return a sequnce of position selected by the player
+     * it uses to know where the player has clicked
+     * @return a sequence of position selected by the player
      */
     public Sequence<Position> positionsHit();
 
@@ -40,7 +40,7 @@ public interface Weapon {
     /**
      * create a new weapon with the new attack position
      * @param position the new attack position
-     * @return a ne weapon
+     * @return a new weapon
      */
     public Weapon weaponWithCorrectPlacement(Position position);
 }

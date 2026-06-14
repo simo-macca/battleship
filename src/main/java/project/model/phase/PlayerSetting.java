@@ -18,9 +18,9 @@ import project.configuration.ConstantsUtils;
 import project.ui.cartesianWorldGraphics.CartesianWorldPosition;
 
 /**
- * PlayerSetting phase render the board without any boat on it. Here the players can "create" their dispositions
- * In this phase of the game, the current player drug the boat he wants to place on the grid and drop it on the position he wants
- * The done eyboard input lends on the players settings of the second player if he has not choosen yet or to the choose weapon phase for the first player to play
+ * PlayerSetting phases render the board without any boat on it. Here the players can "create" their dispositions
+ * In this phase of the game, the current player drugs the boat he wants to place on the grid and drops it on the position he wants
+ * The done eyboard input lends on the player settings of the second player if he has not choosen yet or to the choose weapon phase for the first player to play
  */
 public record PlayerSetting(BoatGraphics choosenBoat, Sequence<BoatGraphics> boats, Sequence<BoatGraphics> defaults, int selectedBoatIndex, int boatsRemainingToBePlaced, boolean clickedOnBoat) implements Phase {
 
@@ -73,7 +73,7 @@ public record PlayerSetting(BoatGraphics choosenBoat, Sequence<BoatGraphics> boa
 
     public PlayerSetting updateBoatsSequence(Sequence<BoatGraphics> newBoat){
         return new PlayerSetting(
-            this.choosenBoat, 
+            this.choosenBoat,
             newBoat, 
             this.defaults, 
             this.selectedBoatIndex, 
@@ -84,7 +84,7 @@ public record PlayerSetting(BoatGraphics choosenBoat, Sequence<BoatGraphics> boa
 
     public PlayerSetting updateSelectedBoatIndex(int index){
         return new PlayerSetting(
-            this.choosenBoat, 
+            this.choosenBoat,
             this.boats, 
             this.defaults, 
             index, 
@@ -95,7 +95,7 @@ public record PlayerSetting(BoatGraphics choosenBoat, Sequence<BoatGraphics> boa
 
     public PlayerSetting updateBoatsToBePlaced(int toBePlaced){
         return new PlayerSetting(
-            this.choosenBoat, 
+            this.choosenBoat,
             this.boats, 
             this.defaults, 
             this.selectedBoatIndex, 
@@ -106,7 +106,7 @@ public record PlayerSetting(BoatGraphics choosenBoat, Sequence<BoatGraphics> boa
 
     public PlayerSetting updateClickedOn(boolean clickedOn){
         return new PlayerSetting(
-            this.choosenBoat, 
+            this.choosenBoat,
             this.boats, 
             this.defaults, 
             this.selectedBoatIndex, 

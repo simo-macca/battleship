@@ -12,7 +12,7 @@ import project.model.Position;
 import project.configuration.ConstantsUtils;
 
 /**
- * it rappresents the default weapons with a single projectiles
+ * it represents the default weapons with a single projectile
  * @param buttonPosition that corresponds to where the button is positioned in the background
  * @param attackPosition that corresponds to the position that the player just selected
  */
@@ -23,7 +23,7 @@ public record SingleBomb(Position buttonPosition, Position attackPosition) imple
     @Override
     public int numberProjectiles() {
         return 1;
-    };
+    }
 
     @Override
     public Sequence<Position> positionsHit() {
@@ -50,20 +50,20 @@ public record SingleBomb(Position buttonPosition, Position attackPosition) imple
     @Override
     public Graphic render() {
         // creation all component for the fuse
-        Sequence<Graphic> explotions = replicate(pin(CENTER_RIGHT, rectangle(LENGTH/5, LENGTH/15, rgb(211, 118, 52))), 8);
-        Graphic explotion = Toolbelt.composes(
+        Sequence<Graphic> explosions = replicate(pin(CENTER_RIGHT, rectangle(LENGTH/5, LENGTH/15, rgb(211, 118, 52))), 8);
+        Graphic explosion = Toolbelt.composes(
             map(
                 a -> rotate(a.first(), a.second()),
-                zip(range(0,181,45),explotions)
+                zip(range(0,181,45), explosions)
             )
         );
-        // the explotion of the fuse
-        Graphic explotionFuse = compose(circularSector(LENGTH/10, 180, WHITE), pin(BOTTOM_CENTER, rotate(180, explotion)));
-        // the rope f the fuse
+        // the explosion of the fuse
+        Graphic explosionFuse = compose(circularSector(LENGTH/10, 180, WHITE), pin(BOTTOM_CENTER, rotate(180, explosion)));
+        // the rope of the fuse
         Graphic ropeFuse = rotate(45, pin(CENTER_RIGHT, rectangle((LENGTH * 7/20) * Math.sqrt(2) - 5, LENGTH/10, rgb(80, 80, 80))));
         // composition of the fuse
         Graphic allFuse = compose(
-            pin(CENTER,rotate(-45, explotionFuse)),
+            pin(CENTER,rotate(-45, explosionFuse)),
             ropeFuse
         );
         // composition of the bomb

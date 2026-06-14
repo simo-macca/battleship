@@ -75,7 +75,7 @@ public final class Toolbelt {
     /**
      * Remove the element from the sequence
      * @param obj the object to be deleted
-     * @param seq the list in which the object is present
+     * @param sequence the list in which the object is present
      * @return the list without the object
      */
     public static <T> Sequence<T> remove(T obj, Sequence<T> sequence) {

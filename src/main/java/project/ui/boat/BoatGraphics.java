@@ -24,7 +24,7 @@ import project.ui.cartesianWorldGraphics.CartesianWorldPosition;
 
 /**
  * BoardGraphics are the same boats as the players but are rendered on the canvas, all have:
- * @param position the first postion
+ * @param position the first position
  * @param graphic the boat graphic
  * @param sunk if it is sunken or no
  * @param vertical if it is vertical or no
@@ -98,10 +98,10 @@ public record BoatGraphics(CartesianWorldPosition position, Graphic graphic, boo
             emptyGraphic();
     }
 
-    public static Sequence<BoatGraphics> fromLogicBoatsToPhisicalBoats(Sequence<Boat> boats){
+    public static Sequence<BoatGraphics> fromLogicBoatsToPhysicalBoats(Sequence<Boat> boats){
         return Toolbelt.map(
             (a) -> a.fromLogicBoatToBoatGraphic(
-                    positionToPhisicalBoardPosition(
+                    positionToPhysicalBoardPosition(
                         directConversion(ConstantsUtils.BOARD_LEFT_CORNER_POSITION), 
                         a.startingPosition(), 
                         ConstantsUtils.TILE_LENGTH)
@@ -142,15 +142,15 @@ public record BoatGraphics(CartesianWorldPosition position, Graphic graphic, boo
         );
     }
 
-    public boolean isBoatGraphicInsideBoard(int units, CartesianWorldPosition analizedPosition, Board board){
+    public boolean isBoatGraphicInsideBoard(int units, CartesianWorldPosition analyzedPosition, Board board){
         return units == 0?
             true:
-            board.isPositionOverBoard(analizedPosition)?
+            board.isPositionOverBoard(analyzedPosition)?
                 isBoatGraphicInsideBoard(
                     units - 1, 
                     vertical?
-                        new CartesianWorldPosition(analizedPosition.x(), analizedPosition.y() - ConstantsUtils.TILE_LENGTH):
-                        new CartesianWorldPosition(analizedPosition.x() + ConstantsUtils.TILE_LENGTH, analizedPosition.y()), 
+                        new CartesianWorldPosition(analyzedPosition.x(), analyzedPosition.y() - ConstantsUtils.TILE_LENGTH):
+                        new CartesianWorldPosition(analyzedPosition.x() + ConstantsUtils.TILE_LENGTH, analyzedPosition.y()),
                     board
                 ):
                 false;

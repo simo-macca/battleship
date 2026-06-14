@@ -16,7 +16,7 @@ public record Position(int x, int y) {
 
     /**
      * it uses to change coordinate to position
-     * @param coordinate a old coordinate
+     * @param coordinate an old coordinate
      * @return a new position with the old coordinate
      */
     public static Position coordinateToPosition(Coordinate coordinate){

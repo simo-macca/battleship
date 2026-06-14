@@ -5,10 +5,10 @@ import project.configuration.ConstantsUtils;
 
 public record CartesianWorldPosition(int x, int y) {
 
-    public static CartesianWorldPosition positionToPhisicalBoardPosition(CartesianWorldPosition boardPosition, Position virtualPosition, int tileLenght){
+    public static CartesianWorldPosition positionToPhysicalBoardPosition(CartesianWorldPosition boardPosition, Position virtualPosition, int tileLength){
         return new CartesianWorldPosition(
-            boardPosition.x() + virtualPosition.x()*tileLenght + 1,
-            boardPosition.y() - virtualPosition.y()*tileLenght - 1
+            boardPosition.x() + virtualPosition.x() * tileLength + 1,
+            boardPosition.y() - virtualPosition.y() * tileLength - 1
         );
     }
 

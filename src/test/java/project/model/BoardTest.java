@@ -15,7 +15,7 @@ public class BoardTest {
     private static final CartesianWorldPosition MOUSE_IN_1 = new CartesianWorldPosition(234, 345);
     private static final CartesianWorldPosition MOUSE_OUT_1 = new CartesianWorldPosition(0, 0);
     private static final CartesianWorldPosition MOUSE_IN_2 = new CartesianWorldPosition(126, 424);
-    private static final CartesianWorldPosition MOUSEOUT2 = new CartesianWorldPosition(453, 43);
+    private static final CartesianWorldPosition MOUSE_OUT_2 = new CartesianWorldPosition(453, 43);
     private static final CartesianWorldPosition MOUSE_IN_3 = new CartesianWorldPosition(374, 176);
     private static final CartesianWorldPosition MOUSE_IN_4 = new CartesianWorldPosition(126, 176);
     private static final CartesianWorldPosition MOUSE_IN_5 = new CartesianWorldPosition(374, 424);
@@ -25,7 +25,7 @@ public class BoardTest {
         Assert.assertTrue(Board.isMouseOver(MOUSE_IN_1, BOARD.boardPosition(), BOARD_LENGTH, BOARD_LENGTH));
         Assert.assertFalse(Board.isMouseOver(MOUSE_OUT_1, BOARD.boardPosition(), BOARD_LENGTH, BOARD_LENGTH));
         Assert.assertTrue(Board.isMouseOver(MOUSE_IN_2, BOARD.boardPosition(), BOARD_LENGTH, BOARD_LENGTH));
-        Assert.assertFalse(Board.isMouseOver(MOUSEOUT2, BOARD.boardPosition(), BOARD_LENGTH, BOARD_LENGTH));
+        Assert.assertFalse(Board.isMouseOver(MOUSE_OUT_2, BOARD.boardPosition(), BOARD_LENGTH, BOARD_LENGTH));
         Assert.assertTrue(Board.isMouseOver(MOUSE_IN_3, BOARD.boardPosition(), BOARD_LENGTH, BOARD_LENGTH));
     }
 

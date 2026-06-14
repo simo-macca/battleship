@@ -15,7 +15,7 @@ import project.ui.boat.BoatGraphics;
 import project.ui.cartesianWorldGraphics.CartesianWorldPosition;
 
 /**
- * Mode render the "Main page" of the game where the player can choose the game mode, i.e. if play with a bot or with a player.
+ * Modes render the "Main page" of the game where the player can choose the game mode, i.e., if play with a bot or with a player.
  */
 
 public record Mode() implements Phase {

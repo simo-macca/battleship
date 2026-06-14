@@ -180,7 +180,7 @@ public class PhaseUI {
         return placeBoatsAndWeapons(
                 chooseWeaponBackground(game.currentPlayer().playerName()),
                 game, 
-                BoatGraphics.fromLogicBoatsToPhisicalBoats(game.getOpponent().boats())
+                BoatGraphics.fromLogicBoatsToPhysicalBoats(game.getOpponent().boats())
             )
             .asGraphic();
     }
@@ -189,7 +189,7 @@ public class PhaseUI {
         return placeBoatsAndWeapons(
                 choosePositionBackground(game.currentPlayer().playerName()),
                 game, 
-                concat(BOATS, BoatGraphics.fromLogicBoatsToPhisicalBoats(game.getOpponent().boats()))
+                concat(BOATS, BoatGraphics.fromLogicBoatsToPhysicalBoats(game.getOpponent().boats()))
             )
             .asGraphic();
     }
@@ -198,18 +198,18 @@ public class PhaseUI {
         return placeBoatsAndWeapons(
                 afterAttackBackground(game.currentPlayer().playerName(), Player.hit(game)),
                 game, 
-                concat(BOATS, BoatGraphics.fromLogicBoatsToPhisicalBoats(game.getOpponent().boats()))
+                concat(BOATS, BoatGraphics.fromLogicBoatsToPhysicalBoats(game.getOpponent().boats()))
             )
             .asGraphic();
     }
-/** easter egg */
+/** Easter egg */
     public static Graphic renderRoundEnded(Game game){
         return overlay(
             GameUI.winner(game.currentPlayer().playerName()),
             placeBoatsAndWeapons(
                 pin(BOTTOM_LEFT, roundEndedBackground(game.currentPlayer().playerName(), Player.hit(game))),
                 game, 
-                concat(BOATS, BoatGraphics.fromLogicBoatsToPhisicalBoats(game.getOpponent().boats()))
+                concat(BOATS, BoatGraphics.fromLogicBoatsToPhysicalBoats(game.getOpponent().boats()))
             )
             .asGraphic()
         );

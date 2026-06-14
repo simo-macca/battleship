@@ -12,11 +12,11 @@ import project.configuration.ConstantsUtils;
 import project.ui.cartesianWorldGraphics.CartesianWorldPosition;
 
 /**
- * our game is based of 4 principles parameter:
- * @param roundPhase that rappresent in which phase of the game the player is
+ * our game is based on 4 principles parameter:
+ * @param roundPhase that represent in which phase of the game the player is
  * @param board a matrix 2d to render the board of the game in which there will the players' boats
  * @param playerIndex that knows which of the two players is actually playing
- * @param players a sequence of player which can be two Player or one Player and one bot
+ * @param players a sequence of player that can be two Player or one Player and one bot
 */ 
 public record Game(Phase roundPhase, Board board, int playerIndex, Sequence<Player> players, boolean quit) {
 
@@ -30,14 +30,14 @@ public record Game(Phase roundPhase, Board board, int playerIndex, Sequence<Play
 
     /**
      * it uses to know which player is playing
-     * @return the current player which is playing
+     * @return the current player that is playing
      */
     public Player currentPlayer() {
         return Toolbelt.get(this.playerIndex(), this.players);
     }
 
     /**
-     * it is used to update the player sequence with one of the updated player
+     * it is used to update the player sequence with one of the updated players
      * @param newCurrentPlayer the new player to update into the sequence
      * @return the updated list
      */
@@ -112,7 +112,7 @@ public record Game(Phase roundPhase, Board board, int playerIndex, Sequence<Play
     }
 
     /**
-     * it uses to change the palyer
+     * it uses to change the player
      * @return a new game with a new player index
      */
     public Game nextPlayer(){
@@ -130,7 +130,7 @@ public record Game(Phase roundPhase, Board board, int playerIndex, Sequence<Play
 
     /**
      * it uses to know who are the enemy
-     * @return the oppenent of the current player
+     * @return the opponent of the current player
      */
     public Player getOpponent(){
         return playerIndex == 0?
@@ -139,8 +139,8 @@ public record Game(Phase roundPhase, Board board, int playerIndex, Sequence<Play
     }
 
     /**
-     * Determine if a player is a winner, i.e if all its boats is sunked.
-     * @param player the number of the sunked boats
+     * Determine if a player is a winner, i.e., if all its boats are sunken.
+     * @param player the number of the sunken boats
      * @return true if the player is a winner, false otherwise
    */
     public boolean isWinner(Player player) {

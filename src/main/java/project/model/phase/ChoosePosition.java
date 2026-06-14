@@ -21,7 +21,7 @@ import project.configuration.ConstantsUtils;
 public record ChoosePosition() implements Phase {
 
     /**
-     * it's used to update a player adding the current postion into the projectiles' sequence
+     * it's used to update a player adding the current position into the projectiles' sequence
      */
     public Game handleMouse(Coordinate coordinate, Game game) {
         Position mouse = Position.coordinateToPosition(coordinate);

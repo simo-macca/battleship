@@ -15,10 +15,10 @@ import project.ui.boat.BoatGraphics;
 import project.ui.cartesianWorldGraphics.CartesianWorldPosition;
 
 /**
- * Boat rappresent all the boat, both utents and computers. All of them have:
- * @param startingPosition the firts position of the first component of the boat
- * @param hittablePositions all the possibile hittable positions of this boat
- * @param isSunk if it sunken or no
+ * Boats represent all the boat, both utents and computers. All of them have:
+ * @param startingPosition the first position of the first component of the boat
+ * @param hittablePositions all the possible hittable positions of this boat
+ * @param isSunk if it has sunken or no
  * @param isVertical if is vertical or no
  * @param numberOfUnits the number of the boats' unit
  * @param color the color of the boat
@@ -26,9 +26,9 @@ import project.ui.cartesianWorldGraphics.CartesianWorldPosition;
 public record Boat(Position startingPosition, Sequence<Position> hittablePositions, boolean isSunk, boolean isVertical, int numberOfUnits, Color color) {
 
     /**
-     * give all the possible hittablr positions in according with the sequence of boats
+     * give all the possible hittable positions in according to the sequence of boats
      * @param boats sequence of boats whose hittable positions you want to know about
-     * @return all the possibile hittable positions of all the boats
+     * @return all the possible hittable positions of all the boats
      */
     public static Sequence<Position> allHittablePositionsOnBoard(Sequence<Boat> boats){
         return isEmpty(boats)?
@@ -37,21 +37,21 @@ public record Boat(Position startingPosition, Sequence<Position> hittablePositio
     }
 
     /**
-     * give all the possible hittable positions in according with the first position
+     * give all the possible hittable positions in according to the first position
      * @param startingPosition the first position
-     * @param boatLenght the length of the boat
+     * @param boatLength the length of the boat
      * @param vertical if it's vertical
-     * @return all the possible hittable positions in according with the first position
+     * @return all the possible hittable positions in according to the first position
      */
-    public static Sequence<Position> startingHittablePositions(Position startingPosition, int boatLenght, boolean vertical){
+    public static Sequence<Position> startingHittablePositions(Position startingPosition, int boatLength, boolean vertical){
         Position nextPos = vertical
             ? new Position(startingPosition.x(), startingPosition.y() + 1)
             : new Position(startingPosition.x() + 1, startingPosition.y());
         return cons(
             startingPosition,
-            boatLenght == 1
+            boatLength == 1
             ? empty()
-            : startingHittablePositions(nextPos, boatLenght - 1, vertical)
+            : startingHittablePositions(nextPos, boatLength - 1, vertical)
         );
     }
 
@@ -84,7 +84,7 @@ public record Boat(Position startingPosition, Sequence<Position> hittablePositio
     }
 
     /**
-     * it uses to convert the logic boat in a graphic boat
+     * it uses to convert the logic boat on a graphic boat
      * @param position a position where the boat is
      * @return a new BoatGraphic with the same parameter of this boat
      */

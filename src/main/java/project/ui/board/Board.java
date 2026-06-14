@@ -3,7 +3,6 @@ package project.ui.board;
 import static jtamaro.en.Colors.*;
 import static jtamaro.en.Points.*;
 import static jtamaro.en.Graphics.*;
-import static jtamaro.en.Sequences.*;
 import static jtamaro.en.Sequences.of;
 import static jtamaro.en.Sequences.cons;
 import static jtamaro.en.Sequences.concat;
@@ -26,17 +25,17 @@ public record Board(CartesianWorldPosition boardPosition) {
     /**
      * it uses to know if the mouse is on a grid of the game
      * @param mousePosition which corresponds to a mouse position
-     * @param buttonPosition which corresponds to a button position, or the grid position
-     * @param heigth which corresponds to the height of the button/cell
+     * @param buttonPosition which corresponds to a button position or the grid position
+     * @param height which corresponds to the height of the button/cell
      * @param width which corresponds to the width of the button/cell
      * @return true or false based on whether the mouse is inside the borders or not
      */
-    public static boolean isMouseOver(CartesianWorldPosition mousePosition, CartesianWorldPosition buttonPosition, int heigth, int width) {
+    public static boolean isMouseOver(CartesianWorldPosition mousePosition, CartesianWorldPosition buttonPosition, int height, int width) {
         return 
             mousePosition.x() > buttonPosition.x() && 
             mousePosition.x() < buttonPosition.x() + width &&
             mousePosition.y() > ConstantsUtils.HEIGTH - buttonPosition.y() && 
-            mousePosition.y() < (ConstantsUtils.HEIGTH - buttonPosition.y()) + heigth;
+            mousePosition.y() < (ConstantsUtils.HEIGTH - buttonPosition.y()) + height;
     }
 
     /**

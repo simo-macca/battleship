@@ -15,8 +15,8 @@ import project.model.weapon.SingleBomb;
 /**
  * every player must have:
  * @param playerName the name of the player
- * @param BOATS all the player's not sunk boats, if this is empty(), player 2 won
- * @param selectedWeapons which weapons he selected
+ * @param boats all the player's not sunk boats, if this is empty(), player 2 won
+ * @param selectedWeapon which weapons he selected
  * @param weapons all the projectile he used in the game to render their position
 */
 
@@ -30,7 +30,7 @@ public record Human(String playerName,  Sequence<Boat> boats, Weapon selectedWea
     }
 
     /**
-     * it is used to  move to the next stage iff the weapon is selected
+     * it is used to move to the next stage if and only if the weapon is selected
      * @param game is the current phase game
      * @return a new game in the next phase with the current player updated with the current weapon
      */
@@ -76,7 +76,7 @@ public record Human(String playerName,  Sequence<Boat> boats, Weapon selectedWea
     }
 
     /**
-     * it's used change the current player if the player doesn't hit the boat
+     * it's used to change the current player if the player doesn't hit the boat
      * @param game is the current phase game
      * @return a new game with the next player in the next phase and the current player updated
      */

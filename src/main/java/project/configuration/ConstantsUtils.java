@@ -32,7 +32,7 @@ public final class ConstantsUtils {
     // Background of the weapons button
     public static final int WEAPON_BACKGROUND_LENGTH = 70;
     public static final Graphic WEAPON_BACKGROUND = overlay(Toolbelt.square(WEAPON_BACKGROUND_LENGTH - 10, WHITE), Toolbelt.square(WEAPON_BACKGROUND_LENGTH, rgb(100, 100, 100)));
-    // Position of the weapon button on the choose weapon phase
+    // Position of the weapon button on the chosen weapon phase
     public static final Position WEAPON_BUTTON_POSITION = new Position(30, 160);
     
     // ------------------------- Initial Game Settings ------------------------------

@@ -6,9 +6,9 @@ import jtamaro.en.io.Coordinate;
 import jtamaro.en.io.KeyboardChar;
 
 /**
- * Phase rappresent the all step about the game. The main goal of it is to change dinamiically the frame of the game
+ * Phases represent the all steps about the game. The main goal of it is to dynamically change the frame of the game
  * @see Mode
- * @see PlayerSettinga
+ * @see PlayerSetting
  * @see ChooseWeapon
  * @see ChoosePosition
  * @see AfterAttack

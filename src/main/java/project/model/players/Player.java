@@ -24,85 +24,85 @@ public interface Player {
 
     // common method with different implementations
     /**
-     * it uses to set a new sequnce of boats inside of the player
+     * it uses to set a new sequence of boats inside the player
      * @param boats a new sequence of boats
      * @return a new player with the boats updated
      */
     public Player setBoats(Sequence<Boat> boats);
 
     /**
-     * it uses by the dynamic dispacth for the playerSettingPhase
+     * it uses by the dynamic dispatch for the playerSettingPhase
      * @param settingPhase a default playerSettingPhase
      * @param game tue current game
-     * @return a new game with the boats positions updated
+     * @return a new game with the boat positions updated
      */
     public Game playerSetting(PlayerSetting settingPhase, Game game);
 
     /**
-     * it uses by the dynamic dispacth for the chooseWeaponPhase
-     * @param game the currnet game
+     * it uses by the dynamic dispatch for the chooseWeaponPhase
+     * @param game the current game
      * @return a new game with the selectedWeapon updated
      */
     public Game startPlayerTurns(Game game);
 
     /**
-     * it uses by the dynamic dispacth for the chooseWeaponPhase
-     * @param game the currnet game
+     * it uses by the dynamic dispatch for the chooseWeaponPhase
+     * @param game the current game
      * @return a new game with the selectedWeapon updated
      */
     public Game startCompTurns(Game game);
 
     /**
-     * it uses by the dynamic dispacth for the choosePostionPhase
-     * @param game the currnet game
-     * @return a new game with the  choosePositon updated
+     * it uses by the dynamic dispatch for the choosePostionPhase
+     * @param game the current game
+     * @return a new game with the choosePositon updated
      */
     public Game choosingPosition(Game game);
 
     /**
-     * it uses by the dynamic dispacth for the afterAttackPhase
-     * @param game the currnet game
-     * @return a new game with the the new player or the same player based on whether the player has hit or not.
+     * it uses by the dynamic dispatch for the afterAttackPhase
+     * @param game the current game
+     * @return a new game with the new player or the same player based on whether the player has hit or not.
      */
     public Game attacking(Game game);
 
     /**
      * it uses to go to the next game
      * @param hit if the player has hit or no
-     * @param game the currnet game
-     * @return a new game with the the new player or the same player based on whether the player has hit or not.
+     * @param game the current game
+     * @return a new game with the new player or the same player based on whether the player has hit or not.
      */
     public Game nextGame(boolean hit, Game game);
 
     /**
      * it uses to update the opponent after the player play
      * @param oldPlayer the old player
-     * @param newBoats the new sequnce of boats
-     * @param newWeapon the new selected weapon
-     * @return a new update with the new boats and the new selected weapon
+     * @param newBoats the new sequence of boats
+     * @param newWeapon the newly selected weapon
+     * @return a new update with the new boats and the newly selected weapon
      */
     public Player updateOpponent(Player oldPlayer, Sequence<Boat> newBoats, Weapon newWeapon);
 
     /**
-     * it uses by the comptuer to change its hitBefore
+     * it uses by the computer to change its hitBefore
      * @return a new Player with the hitBefore updated
      */
     public Player changeHitBefore();
 
     /**
-     * it uses by the comptuer to change its direction
+     * it uses by the computer to change its direction
      * @return a new Player with the direction updated
      */
     public Player changeDirComp();
 
     /**
-     * it uses by the comptuer to change its lastHitPos
+     * it uses by the computer to change its lastHitPos
      * @return a new Player with the lastHitPos updated
      */
     public Player changeLastHitPos(Position hitPos);
 
     /**
-     * it uses by the comptuer to change itself
+     * it uses by the computer to change itself
      * @return a new Player with itself updated
      */
     Player updateComp(Weapon currentWeapon, Sequence<Projectile> projectiles, Sequence<Sequence<Position>> updateHittablePos);
@@ -110,8 +110,8 @@ public interface Player {
     // common method with same implementations
     /**
      * it's used to know if the current player has won
-     * @param opponent which corresponds to a opponent
-     * @return true or false wheter the sequence of the opponent's boat is empty
+     * @param opponent which corresponds to an opponent
+     * @return true or false whether the sequence of the opponent's boat is empty
      */
     public static boolean hasWon(Player opponent){
         boolean won = true;
@@ -135,9 +135,9 @@ public interface Player {
     }
 
     /**
-     * it's used to know whether or not the player, when clicking, has hit any boats.
+     * it's used to know whether the player, when clicking, has hit any boats.
      * @param game is the current phase game
-     * @return whether or not the player hit a boat
+     * @return whether the player hit a boat
      */
     public static boolean hit(Game game) {
         Player player = game.currentPlayer();
@@ -158,9 +158,9 @@ public interface Player {
     }
 
     /**
-     * it's used to update the player whether or not he hit the boat
+     * it's used to update the player whether he hit the boat
      * @param game is the current phase game
-     * @return a new game in the last phase, RoundEnded, if the current player has won, or a new game with the player updated in the next phase with the himself
+     * @return a new game in the last phase, RoundEnded, if the current player has won, or a new game with the player updated in the next phase with the
      */
     public static Game updatePlayer(Game game) {
         Player enemy = game.getOpponent();

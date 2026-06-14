@@ -5,7 +5,7 @@ import project.model.Position;
 public interface Direction {
 
     /**
-     * it uses to know the next position in according with the current direction
+     * it uses to know the next position in according to the current direction
      * @param pos the old pos
      * @return the next position based on the previous one
      */
@@ -13,7 +13,7 @@ public interface Direction {
 
     /**
      * it uses to change the current dir
-     * @return the ne direction
+     * @return the né direction
      */
     public Direction changeDir();
 }
