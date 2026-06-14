@@ -10,6 +10,16 @@ import project.model.Game;
  */
 public class Main {
 
+  /**
+   * The main entry point for the Battleship application. This method delegates to the method to
+   * start the game.
+   *
+   * @param args command-line arguments (currently unused)
+   */
+  public static void main(String[] args) {
+    play();
+  }
+
   /** Build and run an Interaction for the Battleship Game with 2 players. */
   public static void play() {
     IO.interact(Game.create())

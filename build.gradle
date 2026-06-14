@@ -1,5 +1,6 @@
 plugins {
     id "java"
+    id "application" // Add this line
     id "cpd" version "1.0"
     id "pmd"
     id "jacoco"
@@ -7,6 +8,10 @@ plugins {
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+application {
+    mainClass = 'project.Main'
 }
 
 tasks.withType(Javadoc) {
