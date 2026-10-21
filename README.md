@@ -1,79 +1,190 @@
 # Battleship in Java
 
-A full-featured implementation of the classic Battleship board game written in Java. Built using the JTamaro library for the graphical user interface, this project features interactive grid gameplay, custom graphics, and multiple game modes including an intelligent AI opponent.
+A modular, full-featured desktop implementation of the classic Battleship naval combat game written in Java. Built with a strict Model-View separation and powered by the JTamaro graphics library, this application features an interactive graphical user interface, drag-and-drop fleet positioning, and multiple gameplay modes including an intelligent, state-driven AI opponent.
 
-## Architecture Overview
+## Architecture and Design Patterns
 
-The project is structured with a strict Model-View separation to keep the logic clean and decoupled from the graphics:
+The codebase is built on functional and object-oriented principles, emphasizing immutability and decoupling domain logic from UI rendering:
 
-- **Model (`project.model`):** The computational core and business logic. It handles the game state, grid validation, ship placement, weapon ballistics, and AI decision-making. The classes in this package are fully covered by unit tests.
-- **UI (`project.ui`):** The visual interface built with `jtamaro`. It listens to state changes and user inputs to render the canvas, animations, phase transitions, and interactive grids.
+- **Model (`project.model`):** The domain logic layer. It encapsulates board state, coordinate transformations, ship placement validation, turn management, and AI search heuristics. All model records and classes are independent of the graphics engine and fully validated by unit tests.
+- **UI (`project.ui`):** The presentation layer using `jtamaro`. It consumes immutable state snapshots from the model to render the visual elements, boards, targeting markers, and phase transitions.
+- **Toolbelt (`project.Toolbelt`):** Utility functions providing immutable sequence transformations, list lookups, and geometry helpers.
 
-## Features
+### Design Patterns Used
 
-- **Multiple Game Modes:** Play locally against a friend (Human vs. Human) or challenge the AI (Human vs. Computer).
-- **Adjustable AI Difficulty:**
-  - *Easy:* The computer uses a random targeting strategy.
-  - *Hard:* The computer uses a logical targeting strategy to hunt down your ships efficiently.
-- **Interactive UI:** A fully custom graphical interface for placing ships, selecting game modes, and firing at the opponent's grid.
-- **Weapon System:** Support for different kinds of weapons and projectiles during the attack phase.
+1. **State Pattern (Phases):**
+   The application state machine is modeled via the `Phase` interface (`project.model.phase.Phase`), cleanly decoupling game stages:
+   - `Mode`: Main menu to choose between 2-Player local mode or playing against the Computer.
+   - `ChooseDifficulty`: Difficulty selection screen for AI opponents (Easy vs. Hard).
+   - `PlayerSetting`: Interactive preparation phase where players position and rotate their ships on the grid.
+   - `ChooseWeapon`: Intermediary phase presenting weapons before target selection.
+   - `ChoosePosition`: Active targeting phase where the player clicks on the opponent's grid to fire.
+   - `AfterAttack`: Post-attack inspection phase showing hit/miss results and sunk ships before handing over the turn.
+   - `RoundEnded`: Victory phase showing the winner and allowing a restart.
 
-## Prerequisites
+2. **Strategy Pattern (Players and AI):**
+   The `Player` hierarchy allows uniform handling of human and algorithmic players:
+   - `Human`: Governed by mouse and keyboard events.
+   - `RandomComputer`: Easy difficulty AI selecting unattacked coordinates uniformly at random.
+   - `LogicComputer`: Hard difficulty AI implementing a hunt-and-target search algorithm. Upon hitting a ship, it dynamically explores adjacent coordinates in cardinal directions (`Up`, `Down`, `Left`, `Right`) until the ship is destroyed.
 
-To run this game, you must have **Java 17** installed. The project uses the Gradle wrapper, so you do not need to install Gradle manually.
+3. **Visitor Pattern (Projectiles):**
+   Projectiles (`HitProjectile`, `MissProjectile`) implement a visitor interface (`ProjectileVisitor`, `ProjectileRenderer`) to separate data structures from visual representations on the canvas.
 
-## How to Run
+## Gameplay and Fleet Specifications
 
-### Option 1: Using the Command Line
+The game takes place on a standard 10x10 coordinate grid. Each player deploys a fleet of four naval vessels before combat begins:
 
-1. Clone this repository to your local machine.
-    ```bash
-    git clone git@github.com:simo-macca/battleship.git
-    ```
-2. Open your terminal and navigate to the root of the repository.
-3. Execute the game by running:
-   ```bash
-   ./gradlew run
-   ```
+| Ship Type | Size (Tiles) | Theme Color | Placement Description |
+| :--- | :--- | :--- | :--- |
+| **Destroyer** | 2 | Green | Fast patrol boat |
+| **Submarine** | 3 | Blue | Tactical sub-surface vessel |
+| **Battleship** | 4 | Magenta | Heavy combat vessel |
+| **Aircraft Carrier** | 5 | Orange | Flagship carrier |
 
-### Option 2: Using Visual Studio Code / IDE
+## Controls and Keybindings
 
-1. Open the project folder in your IDE.
-2. Navigate to `src/main/java/project/Main.java`.
-3. Run the `main` method directly from your IDE's run button.
+The game accepts mouse clicks and keyboard commands depending on the current phase:
 
-## Controls
+### Global Commands (Active in any phase)
+- `R`: Reset game back to the initial start screen.
+- `Q`: Quit and close the application.
 
-* **Mouse Click**: Place ships, select targets, and fire weapons.
-* **E**: Select Easy difficulty
-* **H**: Select Hard difficulty
-* **R**: Reset / Restart the game
-* **Q**: Quit the application
+### Phase-Specific Controls
+
+#### 1. Mode Selection (`Mode`)
+- `U`: Select **User vs. User** (2-Player local pass-and-play).
+- `C`: Select **User vs. Computer** (Single player against AI).
+
+#### 2. Difficulty Selection (`ChooseDifficulty`)
+- `E`: Select **Easy** mode (Random targeting AI).
+- `H`: Select **Hard** mode (Logic-driven hunt-and-target AI).
+
+#### 3. Fleet Deployment (`PlayerSetting`)
+- **Mouse Drag & Drop**: Click and hold a ship to move it across the board, then release over grid cells.
+- `S`: Rotate the currently selected ship (toggle horizontal / vertical).
+- `N`: Confirm fleet disposition and advance to the next player (or start combat once all ships are placed).
+
+#### 4. Weapon & Strike Selection (`ChooseWeapon`)
+- `S`: Enter targeting mode to select attack coordinates (Human player).
+- `Enter` / `Return`: Trigger computer turn execution (when playing against AI).
+
+#### 5. Target Selection (`ChoosePosition`)
+- **Mouse Click**: Click on an unattacked cell on the opponent's board to fire.
+
+#### 6. Turn Handover (`AfterAttack`)
+- `N`: Confirm attack outcome and pass turn to the other player.
 
 ## Project Structure
 
 ```text
 battleship/
-├── src/main/java/project/  # Main application source code
-│   ├── model/              # Business logic, game state, and entities
-│   ├── ui/                 # Graphical interface and rendering components
-│   └── Main.java           # Application entry point
-├── src/test/java/project/  # JUnit unit tests for the model package
-├── deps/                   # Local dependencies (JTamaro, CPD plugin)
-└── build.gradle            # Gradle configuration and plugin setup
-
+├── build.gradle                              # Gradle build configuration and plugins
+├── settings.gradle                           # Gradle settings and local repositories
+├── gradlew, gradlew.bat                      # Gradle wrapper executables
+├── pmd.xml                                   # PMD rule definitions for static analysis
+├── deps/                                     # Local Maven repository dependencies
+│   ├── jtamaro/                              # JTamaro functional GUI library (v24.0.3)
+│   └── cpd/                                  # Gradle CPD plugin artifacts
+├── extra/                                    # Design diagrams and architecture sketches
+│   ├── model.png                             # UML model diagram
+│   ├── state_Pattern.png                     # Phase transition diagram
+│   └── state_pattern_sketches.jpg            # State pattern notes
+├── src/
+│   ├── main/java/project/
+│   │   ├── Main.java                         # Application entry point and IO interaction loop
+│   │   ├── Toolbelt.java                     # Functional collection and sequence utilities
+│   │   ├── configuration/
+│   │   │   └── ConstantsUtils.java           # Grid layout, dimensions, and default entities
+│   │   ├── model/
+│   │   │   ├── Game.java                     # Main immutable game state container
+│   │   │   ├── Position.java                 # Coordinate records and grid math
+│   │   │   ├── boat/                         # Boat state and hittable position trackers
+│   │   │   ├── phase/                        # State pattern phase implementations
+│   │   │   ├── players/                      # Human, Computer, and direction heuristics
+│   │   │   └── weapon/                       # Projectiles and weapon representations
+│   │   └── ui/
+│   │       ├── GameUI.java                   # Primary rendering coordinator
+│   │       ├── board/Board.java              # Grid visualization and coordinate conversion
+│   │       ├── boat/BoatGraphics.java        # Ship visual components and drag states
+│   │       ├── cartesianWorldGraphics/       # Screen-to-cartesian coordinate adapters
+│   │       ├── phase/PhaseUI.java            # UI renderers for each game phase
+│   │       └── visitor/                      # Visitor pattern implementations for rendering
+│   └── test/java/project/
+│       └── model/                            # JUnit 4 test suites covering all model logic
+└── .github/workflows/                        # Continuous integration workflows
+    ├── lab.yml                               # Build, check, and test verification workflow
+    └── expression-tutor.yml                  # Automated assignment grading checks
 ```
 
-## Development & Code Quality
+## Prerequisites
 
-This project includes several automated tools to maintain code quality. You can run them via the Gradle wrapper:
+- **Java Development Kit (JDK):** Version 17 or later (Temurin / Adoptium recommended).
+- **Gradle:** Not required separately; the repository bundles the `gradlew` wrapper (Gradle 8.5).
 
-* **Run Unit Tests:** `./gradlew test`
-* **Test Coverage (JaCoCo):** `./gradlew jacocoTestReport` (generates HTML report in `build/jacoco/html`)
-* **Run PMD:** `./gradlew pmdMain` (checks for common programming flaws)
-* **Run CPD:** `./gradlew cpdCheck` (checks for code duplication)
+## How to Build and Run
+
+### Run from Command Line
+
+1. Clone or extract the repository:
+   ```bash
+   git clone git@github.com:simo-macca/battleship.git
+   cd battleship
+   ```
+
+2. Launch the application via the Gradle wrapper:
+   ```bash
+   ./gradlew run
+   ```
+   On Windows PowerShell:
+   ```powershell
+   .\gradlew.bat run
+   ```
+
+### Run from an IDE
+
+1. Open the project root folder in IntelliJ IDEA, VS Code, or Eclipse.
+2. Allow Gradle to import dependencies from `deps/` and Maven Central.
+3. Open `src/main/java/project/Main.java`.
+4. Run the `main` method.
+
+### Build Executable Distributions
+
+To create standalone distribution archives:
+```bash
+./gradlew assemble
+```
+The generated binaries and scripts will be placed under `build/distributions/`.
+
+## Quality Assurance and Testing
+
+The project maintains high code quality through automated checks and unit testing:
+
+- **Unit Tests:**
+  ```bash
+  ./gradlew test
+  ```
+  Executes the full suite of unit tests verifying grid constraints, player behaviors, weapon outcomes, and phase transitions.
+
+- **Test Coverage (JaCoCo):**
+  ```bash
+  ./gradlew jacocoTestReport
+  ```
+  Generates an HTML coverage report located at `build/reports/jacoco/test/html/index.html`.
+
+- **Static Analysis (PMD):**
+  ```bash
+  ./gradlew pmdMain pmdTest
+  ```
+  Runs PMD 7 with rules specified in `pmd.xml` to detect potential design, performance, or styling defects.
+
+- **Copy-Paste Detection (CPD):**
+  ```bash
+  ./gradlew cpdCheck
+  ```
+  Scans Java source files to prevent duplicate code and ensure reusability.
 
 ## Authors
 
 - [Alessandra Sasanelli](https://github.com/Alessandra-Sasanelli)
-- [Simone Maccario](https://www.google.com/search?q=https://github.com/SimoneMaccario)
+- [Simone Maccario](https://github.com/SimoneMaccario)
