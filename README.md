@@ -12,6 +12,8 @@ The codebase is built on functional and object-oriented principles, emphasizing 
 
 ### Design Patterns Used
 
+![State Pattern](extra/state_Pattern.png)
+
 1. **State Pattern (Phases):**
    The application state machine is modeled via the `Phase` interface (`project.model.phase.Phase`), cleanly decoupling game stages:
    - `Mode`: Main menu to choose between 2-Player local mode or playing against the Computer.
